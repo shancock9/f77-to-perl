@@ -4,7 +4,7 @@ COPYING
 INSTALL
 MANIFEST
 Makefile.PL 
-README
+README.md
 TODO
 bin/f2perl
 f/apoly.f

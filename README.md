@@ -1,4 +1,9 @@
-WELCOME TO 
+## f77-to-perl
+
+Fortran::F77toPerl
+
+## SYNOPSIS
+
     Fortran::F77toPerl is a tool for translating Fortran 77 programs into perl. It's
     still in its early stages of development, but quite useful for certain
     tasks.
@@ -6,7 +11,7 @@ WELCOME TO
     Fortran::F77toPerl is free software released under the GNU General Public License --
     please see the included file "COPYING" for details.
 
-PREREQUISITES
+## PREREQUISITES
     F2perl should run on perl systems as old as about 5.004 (this version
     was tested under perl 5.004_04), BUT it outputs code which requires perl
     5.6 or higher to run in most cases. In particular, the output code uses
@@ -19,7 +24,8 @@ PREREQUISITES
 
     F2perl will run without Perl::Tidy, but the output won't look as good.
 
-INSTALLATION
+## INSTALLATION
+
     The standard Makefile.PL method should work:
 
      perl Makefile.PL
@@ -30,7 +36,8 @@ INSTALLATION
     This will install the f2perl script and modules at or below
     Fortran::F77toPerl.
 
-USAGE
+## USAGE
+
      f2perl infile.f
 
     This will produce infile.pl.
@@ -40,7 +47,8 @@ USAGE
     directory in this distribution which illustrate its current capabilities
     and limitations.
 
-SIMPLE TESTS
+## SIMPLE TESTS
+
     The "f" directory contains a number of test files which can be run. For
     example, try
 
@@ -53,7 +61,8 @@ SIMPLE TESTS
     If you have a Fortran compiler, compile and execute brent.f and compare
     the output.
 
-ABOUT
+## ABOUT
+
     I developed the initial version of f2perl in 2002 to assist in
     translating some mathematical and engineering programs to perl. It saved
     me a lot of time.
@@ -69,7 +78,8 @@ ABOUT
     a routine to remain readable and as similar to the Fortran source as
     possible.
 
-BUGS AND ISSUES
+## BUGS AND ISSUES
+
     f2perl provides a good starting point for translating Fortran code to
     perl, but there are a number of open issues and problem areas that you
     need to be aware of. Here is a partial list.
@@ -142,8 +152,3 @@ BUGS AND ISSUES
 
     The code runs correctly. In future versions, f2perl may capitalize such
     names to avoid this problem.
-
-FEEDBACK / BUG REPORTS
-     Steve Hancock
-     perltidy at users.sourceforge.net
-     http://f2perl.sourceforge.net
