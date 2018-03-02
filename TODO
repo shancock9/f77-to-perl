@@ -1,0 +1,24 @@
+TODO list
+    This is a list of the most desirable updates to f2perl, in approximate
+    order of priority.
+
+  Implement a Semi-Automatic Way to Implement Call Prototypes
+    It is very desirable to convert call by reference to call by value
+    wherever possible, as this greatly simplifies coding and improves
+    robustness. It is very tedious to go through fortran code and determine
+    which variables can be converted, so a preliminary pass to do this will
+    be very helpful.
+
+    This should also resolve the issue of whether to pass an array as a
+    reference to an offset array or as a reference to a scalar.
+
+  Find an Fix all Integer Divides
+    This is one of the open bugs, and bad because there is no warning of a
+    problem.
+
+  Implement the .eqv and .neqv. Operators
+    These are not currently done.
+
+  Expand the Collection of Test Cases and Automate Testing
+    Many more are needed to check the parser.
+

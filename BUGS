@@ -1,0 +1,36 @@
+BUGS
+    A bug listed here means that f2perl outputs some translated code that
+    runs but, without warning, gives an incorrect result compared to
+    Fortran.
+
+    See the README file for a list of other limitations of f2perl which are
+    not considered bugs.
+
+  Integer Divides Not Caught
+    An integer divide which occurs within a statement will probably be
+    converted to a perl (floating point) divide, which will produce an
+    incorrect result. For example see the test file int.f. Please check your
+    results carefully, and add "int" functions around such divides.
+
+    This problem can be fixed with some additional coding.
+
+  Array Passing Problems
+    When an array is passed to a subroutine, as in
+
+      dimension a(10)
+      call sub1(a(2))
+
+    there is an ambiguity as to whether an offset array should be passed, or
+    just a scalar. It doesn't matter to the calling routine in Fortran, but
+    it does in perl. At present, an offset array is assumed. See file
+    protobug.f for an illustration. A future solution to this problem may be
+    to do two passes through the source, with the first pass determining the
+    appropriate prototypes for call parameters.
+
+  Formatted Output Problems
+    If the number of items in a formatted output list exceeds the number of
+    format descriptors, Fortran will still output all items by repeating the
+    last group of descriptors. F2perl currently translates format
+    descriptors to printf-style formats, which stop when the format
+    descriptor list is exhausted. For example, see the file format1.f.
+

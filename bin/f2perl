@@ -1,0 +1,98 @@
+#!/usr/bin/perl -w
+############################################################
+#
+#    f2perl - a perl script to convert fortran 77 files to perl
+#
+#    Copyright (c) 2002-2003 by Steven L. Hancock
+#    Distributed under the GPL license agreement; see file COPYING
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+############################################################
+
+use strict;
+
+use 5.004;    # need IO::File from 5.004 or later
+use IO::File;
+use Getopt::Long;
+use Fortran::F77toPerl;
+
+package main;
+
+sub main {
+
+    my $usage = <<EOM;
+  f2perl file.f
+
+  (output goes to file.pl)
+    
+EOM
+    my @option_string = qw(
+      h|help
+      v|version
+    );
+    my %Opts = ();
+    if ( !GetOptions( \%Opts, @option_string ) ) {
+        die " Use -h for help\n";
+    }
+    if ( $Opts{h} ) { print $usage; exit 1; }
+    if ( $Opts{v} ) {
+        print "f2perl version $Fortran::F77toPerl::VERSION\n";
+        exit 1;
+    }
+
+    # begin loop over files
+    foreach my $input_file (@ARGV) {
+
+        unless ( -e $input_file ) {
+            print STDERR "skipping file:$input_file : does not exist\n";
+            next;
+        }
+        unless ( -f $input_file ) {
+            print STDERR "skipping file:$input_file : not a regular file \n";
+            next;
+        }
+        unless ( -T $input_file ) {
+            print STDERR "skipping file:$input_file : Non-text\n";
+            next;
+        }
+        my $input_file_permissions = ( stat $input_file )[2] & 07777;
+
+        # Create an output file name
+        # This is slightly system dependent and needs to be fixed for VMS
+        my $output_file = $input_file;
+        if ( $output_file =~ /^(.+)\.[fF][^.]*$/ ) {
+            $output_file = $1;
+        }
+        $output_file .= ".pl";
+        open OUT, ">$output_file" || die "cannot open output file $output_file: $!\n";
+
+        my $output;
+        Fortran::F77toPerl::f2perl(
+            _source      => $input_file,
+            _destination => \$output,
+        );
+
+        print OUT $output;
+
+        # give output script same permissions as input script
+        # but make it writable
+        chmod( $input_file_permissions | 0600, $output_file )
+          if ($input_file_permissions);
+        close OUT;
+    }    # end loop over input files
+}
+&main;
+__END__
