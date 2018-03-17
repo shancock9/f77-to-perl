@@ -6,7 +6,7 @@
 
 package Fortran::ToPerl::Debugger;
 use strict;
-BEGIN { $^W = 1; }    # turn on warnings
+use warnings;
 
 sub new {
 

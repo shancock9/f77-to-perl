@@ -1,6 +1,6 @@
 package Fortran::F77toPerl::Common;
 use strict;
-BEGIN { $^W = 1; }    # turn on warnings
+use warnings;
 use vars qw(
    $block_maker
 );

@@ -11,7 +11,7 @@
 
 package Fortran::F77toPerl::SourceReader;
 use strict;
-BEGIN { $^W = 1; }    # turn on warnings
+use warnings;
 
 # the default will be to detab 
 use Text::Tabs;

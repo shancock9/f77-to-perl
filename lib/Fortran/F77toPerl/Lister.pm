@@ -6,7 +6,7 @@
 
 package Fortran::F77toPerl::Lister;
 use strict;
-BEGIN { $^W = 1; }    # turn on warnings
+use warnings;
 
 sub new {
     my ( $class, $rlist ) = @_;

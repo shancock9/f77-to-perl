@@ -1,0 +1,19 @@
+# Avoid temp and backup files.
+*~
+*.bak
+*.tmp
+*.sw?
+*.DEBUG
+*.LOG
+*.tdy
+MANIFEST.bak
+RUNME.sh
+/NOTES.txt
+diff.txt
+*.tar.gz
+MYMETA.json
+MYMETA.yml
+/Makefile
+blib/
+pm_to_blib
+tmp/

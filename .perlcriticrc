@@ -1,0 +1,86 @@
+# For a nice reference on this format, see
+# https://github.com/schwern/Perl-Critic/blob/master/examples/perlcriticrc
+
+# Note that placing a side comment ## no critic (NAME) on a statement
+# will stop that line from producing a warning. 
+# There is one such comment in Perl::Tidy::Formatter (string eval).
+
+# only: Directs Perl::Critic to only choose from Policies that are
+# explicitly mentioned in this file.  Otherwise, Perl::Critic chooses
+# from all the Perl::Critic::Policy classes that are found on the
+# local machine.  The default is 0.  If defined, this should be either
+# 1 or 0.
+# only = 0
+
+# severity: Sets the default minimum severity level for Policies.  The
+# default is 5.  If defined, this should be an integer from 1 to 5,
+# where 5 is the highest severity.
+# Currently Perl::Tidy modules pass severity 4 
+
+severity = 5
+
+# verbose: Sets the format for printing Policy violations.  If
+# defined, this should be either a format spcecification, or a numeric
+# verbosity level. See the Perl::Critic POD for more details.
+#verbose = 8
+verbose = %f: [%p] %m at line %l, column %c.\n%d\n
+
+# theme:  Sets the default theme.  Only Policies that fit into this
+# them shall be applied.  If defined, this should be a valid theme
+# expression.  See the Perl::Critic POD for more details about this.
+
+theme = core
+# theme = danger + risky - pbp
+
+# top:  Directs Perl::Critic to only report the top N Policy violations,
+# as ranked by their individual severity.  If defined, this should be
+# a positive integer.
+top = 50
+
+# color-severity-highest: sets the color used for displaying highest
+# severity violations when coloring is in effect. This should be a color
+# specification acceptable to Term::ANSIColor. See the Perl::Critic POD
+# for details. Do not put quotes around the values. The default is 'bold
+# red'.
+color-severity-highest = bold red underline
+
+# color-severity-medium: sets the color used for displaying medium
+# severity violations when coloring is in effect. This should be a color
+# specification acceptable to Term::ANSIColor. See the Perl::Critic POD
+# for details. Do not put quotes around the values. The default is ''.
+color-severity-medium = blue
+
+# color-severity-lowest: sets the color used for displaying lowest
+# severity violations when coloring is in effect. This should be a color
+# specification acceptable to Term::ANSIColor. See the Perl::Critic POD
+# for details. Do not put quotes around the values. The default is ''.
+
+color-severity-lowest =
+
+# if you disagree with a particular Policy, putting a "-" in
+# front of the Policy name will effectively disables that Policy.  It
+# will never be applied unless you use the "-include" option to apply
+# it explicitly.
+
+###########################################################################
+# Deactivated issues go here
+# So this is essentially a list of things to work on.  Some are easy, some are
+# hard. Most are low priority.  Some would be very risky to try to change.
+###########################################################################
+
+
+###########################################################################
+# The following issues are deactivated because I disagree with them
+###########################################################################
+
+# I kind of disagree here; maintaining VERSION numbers for all internal modules
+# can be a needless headache; may be more trouble than its worth
+[-Modules::RequireVersionVar]
+
+# If you set the "only" flag, then Perl::Critic only chooses from
+# Policies that are mentioned in your configuration file.  This is
+# helpful when you want to use only a very small subset of the
+# Policies.  So just create blocks for any other Policies that you
+# want to use.
+
+# [ ... ]

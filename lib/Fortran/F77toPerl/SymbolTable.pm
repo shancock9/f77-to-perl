@@ -7,7 +7,7 @@
 
 package Fortran::F77toPerl::SymbolTable;
 use strict;
-BEGIN { $^W = 1; }    # turn on warnings
+use warnings;
 use Carp;
 
 sub new {
@@ -155,7 +155,7 @@ sub get {
         return $self->{$name}->{$property};
     }
     else {
-        return undef;
+        return;
     }
 }
 
