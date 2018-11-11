@@ -65,7 +65,8 @@ Fortran::F77toPerl
 
     I developed the initial version of f2perl in 2002 to assist in
     translating some mathematical and engineering programs to perl. It saved
-    me a lot of time.
+    me a lot of time.  I do not plan to do any further development on it,
+    but I have posted it in case it might be helpful to someone else.
 
     Fortran code doesn't always map well into Perl, so some human
     intervention and careful checking is almost always required to get a
@@ -76,7 +77,11 @@ Fortran::F77toPerl
     The translated code often has a large amount of complex code at the
     start of a subroutine, but this code exists to allow the inner parts of
     a routine to remain readable and as similar to the Fortran source as
-    possible.
+    possible.  
+
+    An important point is that the translated code has a good chance of
+    actually running correctly and thus allowing further changes to be made 
+    step-by-step with validation along the way.
 
 ## BUGS AND ISSUES
 
@@ -150,5 +155,5 @@ Fortran::F77toPerl
      Ambiguous use of *{q} resolved to *q at (eval 2) line 1.
      Ambiguous use of *{x} resolved to *x at (eval 9) line 1.
 
-    The code runs correctly. In future versions, f2perl may capitalize such
+    The code runs correctly. A solution would be to have f2perl capitalize such
     names to avoid this problem.

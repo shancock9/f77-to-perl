@@ -68,6 +68,8 @@ color-severity-lowest =
 # hard. Most are low priority.  Some would be very risky to try to change.
 ###########################################################################
 
+[-BuiltinFunctions::ProhibitStringyEval]
+
 
 ###########################################################################
 # The following issues are deactivated because I disagree with them

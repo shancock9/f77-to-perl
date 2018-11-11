@@ -1,10 +1,10 @@
 #####################################################################
 #
-# The Fortran::ToPerl::Debugger class shows line tokenization
+# The Fortran::F77toPerl::Debugger class shows line tokenization
 #
 #####################################################################
 
-package Fortran::ToPerl::Debugger;
+package Fortran::F77toPerl::Debugger;
 use strict;
 use warnings;
 
